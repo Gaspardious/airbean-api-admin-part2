@@ -6,6 +6,7 @@ import companyRouter from "./src/routes/info.js"
 import loggerMiddleware from "./src/middleware/logger.js";
 import errorHandlerMiddleware from "./src/middleware/errorHandler.js";
 import notFoundMiddleware from "./src/middleware/notFound.js";
+import adminRouter from "./src/routes/admin.js";
 
 const PORT = 8000;
 
@@ -20,6 +21,7 @@ app.use("/info", companyRouter);
 app.use("/customer", customerRouter);
 app.use("/orders", ordersRouter);
 app.use("/company", companyRouter);
+app.use("/admin", adminRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
@@ -29,6 +31,7 @@ app.use(errorHandlerMiddleware);
 // db['orders'].find();
 // db['users'].find();
 // db['company'].find();
+// db['admin'].find();
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
