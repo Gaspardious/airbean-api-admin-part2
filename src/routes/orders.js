@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { getOrdersByCustomerId } from "../controller/order.js";
 import { getOrderByOrderId } from "../controller/order.js";
-import authenticate from "../middleware/auth.js";
+import { authenticate } from "../middleware/auth.js";
 
 const router = Router();
 

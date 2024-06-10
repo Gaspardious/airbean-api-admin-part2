@@ -61,6 +61,8 @@
 }
 ```
 
+
+
 ### 3.
 
 `Som användare vill jag kunna ta bort en kaffesort i min varukorg så jag kan ändra mig ifall jag la till något av misstag eller inte längre vill ha det jag la till.`
@@ -260,6 +262,7 @@ Routes?
     }
 }
 ```
+`Se ordrar genom att lägga till customerID i slutet, exempelvis 111 eller 222`
 
 #### GET - /orders/:id   
 

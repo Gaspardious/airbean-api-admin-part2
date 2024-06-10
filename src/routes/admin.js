@@ -5,10 +5,10 @@ import { getAllProducts } from "../controller/menu.js"
 import { addToMenu } from "../controller/adminMenu.js"
 import { deleteItemInMenu } from "../controller/adminMenu.js"
 import { updateMenu } from "../controller/adminMenu.js"
+import { adminAuthenticate } from "../middleware/auth.js";
 
 
 const router = Router();
-
 
 // localhost:8000/admin
 router.get("/", async (req, res) => {
@@ -22,16 +22,16 @@ router.post("/login", adminLogin);
 router.post("/register", adminRegister);
 
 // localhost:8000/admin/menu (get all menu items)
-router.get("/menu", getAllProducts);
+router.get("/menu",adminAuthenticate, getAllProducts);
 
 // localhost:8000/admin/menu/items (add menu items to the menu)
-router.post("/menu/items", addToMenu);
+router.post("/menu/items",adminAuthenticate, addToMenu);
 
 // localhost:8000/admin/menu/items (delete menu items from the menu)
-router.delete("/menu/items", deleteItemInMenu);
+router.delete("/menu/items",adminAuthenticate, deleteItemInMenu);
 
 // localhost:8000/admin/menu/items (update menu items in the menu)
-router.put("/menu/items", updateMenu);
+router.put("/menu/items",adminAuthenticate, updateMenu);
 
 
 

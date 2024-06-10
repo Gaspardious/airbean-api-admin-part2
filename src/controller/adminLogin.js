@@ -69,13 +69,14 @@ const adminLogin = async (req, res) => {
             return res.status(400).json({ error: "Invalid password" });
         }
         console.log("User logged in successfully:", user.username);
-        global.currentUser = user.username;
+        global.currentAdminUser = user.username;
         res.status(200).json({ message: "Login successful", user });
     } catch (error) {
         console.error("Error logging in user:", error);
         res.status(500).json({ error: "Failed to login user" });
     }
 };
+
 
 
 

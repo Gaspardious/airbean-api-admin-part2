@@ -13,6 +13,7 @@ const router = Router();
 // router.get("/cart", showCart);
 router.get("/:id", showCart);
 
+
 router.post("/", checkProductExists, (req, res, next) => {
   addToCart(req, res, next);
 });
