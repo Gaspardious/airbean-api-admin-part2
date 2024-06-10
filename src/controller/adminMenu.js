@@ -1,5 +1,7 @@
 import db from "../database/database.js";
 
+
+
 // Add product to menu
 const addToMenu = async (req, res, next) => {
     const id = req.body.product;
@@ -33,6 +35,28 @@ const addToMenu = async (req, res, next) => {
     }
 
 
+    const updateMenu = async (req, res, next) => {
+        const id = req.body.product;
+        const updatedFields = {
+            title: req.body.title,
+            price: req.body.price,
+            desc: req.body.desc,
+            modifiedAt: new Date().toISOString()
+        };
+    
+        db['menu'].update({ _id: id }, { $set: updatedFields }, {}, (err, numAffected) => {
+            if (err) {
+                return res.status(500).send({ message: "Could not update database", error: err.message });
+            }
+            if (numAffected === 0) {
+                return res.status(404).send({ message: "Product not found" });
+            }
+            return res.status(200).send({ product: "Updated" });
+        });
+    };
+
+
+
 // Delete product from menu
 const deleteItemInMenu = async (req, res) => {
     const title = req.body.title;
@@ -56,5 +80,5 @@ const deleteItemInMenu = async (req, res) => {
 };
   
 
-  export { addToMenu, deleteItemInMenu};
+  export { addToMenu, deleteItemInMenu, updateMenu};
 

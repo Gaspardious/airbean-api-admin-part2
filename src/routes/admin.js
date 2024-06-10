@@ -4,6 +4,7 @@ import { adminRegister } from "../controller/adminLogin.js"
 import { getAllProducts } from "../controller/menu.js"
 import { addToMenu } from "../controller/adminMenu.js"
 import { deleteItemInMenu } from "../controller/adminMenu.js"
+import { updateMenu } from "../controller/adminMenu.js"
 
 
 const router = Router();
@@ -28,6 +29,9 @@ router.post("/menu/items", addToMenu);
 
 // localhost:8000/admin/menu/items (delete menu items from the menu)
 router.delete("/menu/items", deleteItemInMenu);
+
+// localhost:8000/admin/menu/items (update menu items in the menu)
+router.put("/menu/items", updateMenu);
 
 
 
