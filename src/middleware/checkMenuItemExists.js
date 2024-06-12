@@ -19,7 +19,7 @@ const checkMenuItemExists = async (req, res, next) => {
     req.menuItems = docs;
     next();
   } catch (err) {
-    console.error('Error in checkItemsExist middleware:', err);
+    console.error('Error in checkMenuItemExists middleware:', err);
     return res.status(500).send({ error: 'Internal server error' });
   }
 };

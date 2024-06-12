@@ -33,7 +33,7 @@ const addToMenu = async (req, res, next) => {
     }
     }
 
-
+    // Update product in menu
     const updateMenu = async (req, res, next) => {
         const id = req.body.product;
         const updatedFields = {
@@ -79,28 +79,34 @@ const deleteItemInMenu = async (req, res) => {
 };
   
 // Add items to campaign
-const addToCampaign = async (items, callback) => {
+const addToCampaign = async (req, res) => {
+    const { items } = req.body;
+    if (!Array.isArray(items) || items.length < 2) {
+      res.status(400).send({ error: 'At least two items are required to create a campaign' });
+      return;
+    }
+  
     try {
       const docs = await menuDb.find({ _id: { $in: items } });
       let campaignItems = [];
       let totalPrice = 0;
-  
+
       docs.forEach(doc => {
         campaignItems.push(doc);
         totalPrice += doc.price;
       });
   
       const campaign = {
-        title: 'CAMPAIGN!',
+        title: "CAMPAIGN",
         items: campaignItems,
         totalPrice: totalPrice
       };
   
       const newDoc = await menuDb.insert(campaign);
-      callback(null, newDoc);
+      res.status(201).send(newDoc);
     } catch (err) {
       console.error('Error in addToCampaign:', err);
-      callback(err);
+      res.status(500).send({ error: 'Failed to create campaign' });
     }
   };
 
