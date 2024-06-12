@@ -1,5 +1,15 @@
 # Airbean-API - Grupp 2
 
+HOW TO START AND TEST THE PROJECT:
+
+1. Go to your terminal and type: "git clone git@github.com:Gaspardious/airbean-api-admin-part2.git"
+2. Open project in VS code. 
+3. Type "npm install"
+4. Type "npm run dev"
+
+Follow Project endpoints below to test different endpoints. Use Insomnia/Postman to try this. 
+
+
 ## 1.
 
 `Som användare vill jag kunna se alla kaffesorter som går att beställa så jag får en överblick vad jag kan beställa och välja mellan.`
@@ -24,6 +34,11 @@
     },
     [...]
 ```
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
 
 ## 2.
 
@@ -61,7 +76,9 @@
 }
 ```
 
-
+#################################################################################################
+#################################################################################################
+#################################################################################################
 
 ### 3.
 
@@ -85,6 +102,9 @@
     "message": "Item deleted successfully"
 }
 ```
+#################################################################################################
+#################################################################################################
+#################################################################################################
 
 ## 4.
 
@@ -99,6 +119,10 @@
     "info": "AirBean levererar kaffe med hjälp av drönare direkt till din dörr via en smidig app. Vi kombinerar avancerad teknologi med en passion för kaffe för en unik och effektiv upplevelse. Våra eldrivna drönare är energieffektiva och minskar utsläppen jämfört med traditionella leveransfordon. Optimerade leveransrutter minskar dessutom onödiga flygningar. Vi erbjuder högkvalitativt kaffe från certifierade ekologiska och fair trade-odlare. Detta säkerställer en etisk produktion och en överlägsen smak i varje kopp. Välj AirBean för en hållbar och bekväm kaffeupplevelse med gott samvete."
 }
 ```
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
 
 ## 5.
 
@@ -131,6 +155,10 @@
     "price": 480
 }
 ```
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
 
 ## 6.
 
@@ -194,12 +222,20 @@
     }
 }
 ```
+#################################################################################################
+#################################################################################################
+#################################################################################################
 
 ## 7.
 
 `Som användare vill jag att det ska finnas en navigering så jag kan enkelt navigera mellan de olika sidorna och hitta det jag söker.`
 
-Routes?
+Hemsidan använder olika routes.
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
 
 ## 8.
 
@@ -233,6 +269,10 @@ Routes?
 }
 ```
 
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
 ## 9.
 
 `Som användare vill jag kunna logga in för att sedan kunna lägga mina ordrar som inloggad användare så dessa sparas till min orderhistorik.`
@@ -249,6 +289,7 @@ Routes?
 ```
 
 ##### Response
+
 
 ```
 {
@@ -299,6 +340,10 @@ Routes?
 }
 ```
 
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
 ## 10.
 
 #### GET - /orders/confirmation/:id    (order-id)
@@ -324,3 +369,282 @@ Routes?
     "deliveryTime": "14:48"
 }
 ```
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 11 - ADMIN register
+
+#### POST - /admin/register
+
+##### Request
+
+{
+  "username": "Elon",
+	"email": "elon.musk@tesla.com",
+	"password": "spacex"
+}
+
+
+
+##### Response
+
+{
+	"message": "User registered successfully",
+	"user": {
+		"username": "Elon",
+		"password": "e78bdebae031095bebcfd3e8954e4b880796dcec73d2a7f4701f5dd62a11f7af",
+		"email": "elon.musk@tesla.com",
+		"_id": "p5xnfwAGksT4DgSj"
+	}
+}
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 12 - ADMIN login
+
+#### POST - /admin/login
+
+##### Request
+
+
+{
+  "username": "Elon",
+	"password": "spacex"
+}
+
+
+##### Response
+
+{
+	"message": "Login successful",
+	"user": {
+		"username": "Elon",
+		"password": "e78bdebae031095bebcfd3e8954e4b880796dcec73d2a7f4701f5dd62a11f7af",
+		"email": "elon.musk@tesla.com",
+		"_id": "p5xnfwAGksT4DgSj"
+	}
+}
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 13 - ADMIN See whole menu (need to be logged in!)
+
+#### GET - /admin/menu/items
+
+##### Response
+
+
+[
+	{
+		"title": "Cortado",
+		"desc": "En cortado med lika delar espresso och varm mjölk.",
+		"price": 33,
+		"_id": "0Gu3mPAbONk1hy4P"
+	},
+	{
+		"title": "Gustav Adolfsbakelse",
+		"price": 45,
+		"desc": "Gustav Adolfsbakelse är en bakelse som äts till minnet av Gustav II Adolfs dödsdag den 6 november 1632",
+		"creationDate": "2024-06-12 11:30:05",
+		"_id": "1urlzhDgKUpD0EJH"
+	},
+	{
+		"title": "Flat White",
+		"desc": "En platt vit med silkeslen mikroskum och stark espresso.",
+		"price": 46,
+		"_id": "3IBqddqDtbAtIi2E"
+	},
+	{
+		"title": "Mocha",
+		"desc": "En söt mocha med choklad och espresso.",
+		"price": 55,
+		"_id": "6ymMjHWMpLGChmJ6"
+	},
+	{
+		"title": "Espresso",
+		"desc": "En stark och aromatisk enkel espresso.",
+		"price": 25,
+		"_id": "QnMf8p1P9ZF9Oerm"
+	},
+	{
+		"title": "Americano",
+		"desc": "En espresso utspädd med varmt vatten.",
+		"price": 35,
+		"_id": "SjwGh9EVaYWtIzs7"
+	},
+	{
+		"title": "CAMPAIGN!",
+		"items": [
+			{
+				"title": "Gustav Adolfsbakelse",
+				"price": 45,
+				"desc": "Gustav Adolfsbakelse är en bakelse som äts till minnet av Gustav II Adolfs dödsdag den 6 november 1632",
+				"creationDate": "2024-06-12 11:30:05",
+				"_id": "1urlzhDgKUpD0EJH"
+			},
+			{
+				"title": "Bryggkaffe",
+				"desc": "Bryggd på månadens bönor.",
+				"price": 39,
+				"_id": "XxbJYtuWvSY6xPu0"
+			}
+		],
+		"totalPrice": 84,
+		"_id": "UaaULf7Ezqscc050"
+	},
+	{
+		"title": "Bryggkaffe",
+		"desc": "Bryggd på månadens bönor.",
+		"price": 39,
+		"_id": "XxbJYtuWvSY6xPu0"
+	},
+	{
+		"title": "Latte",
+		"desc": "En len latte med perfekt balanserad mjölk och espresso.",
+		"price": 49,
+		"_id": "ZVjipnljyz05sa1O"
+	},
+	{
+		"title": "Macchiato",
+		"desc": "En macchiato med en skvätt mjölk.",
+		"price": 30,
+		"_id": "dy1JqGCeAYWaJqri"
+	},
+	{
+		"title": "Cold Brew",
+		"desc": "Kallbryggt kaffe för en uppfriskande smakupplevelse.",
+		"price": 42,
+		"_id": "lN2tmDgmhBl1Mc6k"
+	},
+	{
+		"title": "Cappuccino",
+		"desc": "En krämig cappuccino med skummad mjölk.",
+		"price": 45,
+		"_id": "nG7UZ7wTTM0wm64Q"
+	}
+]
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 14 - ADMIN Add new items to menu (need to be logged in!)
+
+#### POST - /admin/menu/items
+
+##### Request
+
+
+{
+	"title":"Gustav Adolfsbakelse",
+ "desc":"Gustav Adolfsbakelse är en bakelse som äts till minnet av Gustav II Adolfs dödsdag den 6 november 1632",
+ "price":45,
+ "id":""
+}
+
+
+##### Response
+
+{
+	"product": "Added",
+	"formatDate": "2024-06-12 16:14:24",
+	"result": {
+		"title": "Gustav Adolfsbakelse",
+		"price": 45,
+		"desc": "Gustav Adolfsbakelse är en bakelse som äts till minnet av Gustav II Adolfs dödsdag den 6 november 1632",
+		"creationDate": "2024-06-12 16:14:24",
+		"_id": "uhRJ1RoK25oAbNKP"
+	}
+}
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 15 - ADMIN Update items in menu (need to be logged in!)
+
+#### PUT - /admin/menu/items
+
+##### Request
+
+{
+    "product": "WqFostzp1ZzFNmyx",
+    "title": "Elon Muskssbakelse",
+    "price": 450,
+    "desc": "A rocket-shaped cookie"
+}
+
+
+
+##### Response
+
+{
+	"product": "Menu item updated!"
+}
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 16 - ADMIN Delete items in menu (need to be logged in!)
+
+#### DELETE - /admin/menu/items
+
+##### Request
+
+{
+	"title":"Gustav Adolfsbakelse"
+}
+
+
+##### Response
+
+{
+	"message": "Item removed",
+	"deleteMenu": 1
+}
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+## 17 - ADMIN Add products to a campaign (need to be logged in!)
+
+#### POST - /admin/menu/addToCampaign
+
+##### Request
+
+{
+  "items": ["WqFostzp1ZzFNmyx", "XxbJYtuWvSY6xPu0"]
+}
+
+
+
+##### Response
+
+{
+	"title": "CAMPAIGN",
+	"items": [
+		{
+			"title": "Elon Muskssbakelse",
+			"price": 450,
+			"desc": "A rocket-shaped cookie",
+			"creationDate": "2024-06-12 16:20:08",
+			"_id": "WqFostzp1ZzFNmyx",
+			"modifiedAt": "2024-06-12T14:21:47.544Z"
+		},
+		{
+			"title": "Bryggkaffe",
+			"desc": "Bryggd på månadens bönor.",
+			"price": 39,
+			"_id": "XxbJYtuWvSY6xPu0"
+		}
+	],
+	"totalPrice": 489,
+	"_id": "F0dATOpCYEBASHCu"
+}
