@@ -1,6 +1,5 @@
 import db from "../database/database.js";
-
-
+const menuDb = db.menu;
 
 // Add product to menu
 const addToMenu = async (req, res, next) => {
@@ -79,6 +78,31 @@ const deleteItemInMenu = async (req, res) => {
     }
 };
   
+// Add items to campaign
+const addToCampaign = async (items, callback) => {
+    try {
+      const docs = await menuDb.find({ _id: { $in: items } });
+      let campaignItems = [];
+      let totalPrice = 0;
+  
+      docs.forEach(doc => {
+        campaignItems.push(doc);
+        totalPrice += doc.price;
+      });
+  
+      const campaign = {
+        title: 'CAMPAIGN!',
+        items: campaignItems,
+        totalPrice: totalPrice
+      };
+  
+      const newDoc = await menuDb.insert(campaign);
+      callback(null, newDoc);
+    } catch (err) {
+      console.error('Error in addToCampaign:', err);
+      callback(err);
+    }
+  };
 
-  export { addToMenu, deleteItemInMenu, updateMenu};
+  export { addToMenu, deleteItemInMenu, updateMenu, addToCampaign};
 
